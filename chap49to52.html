@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Q1 -->
+    <h1>Question no : 1</h1>
+    <form " id=" signUp" onsubmit="return submitForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <br /> <br />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <br /> <br />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <br /> <br />
+        <button type="submit">Submit</button>
+
+    </form>
+    <div id="formDataDisplay" class="data-display">
+        <!-- Form data will be displayed here after submission -->
+    </div>
+
+    <!-- Q2 -->
+     <h1> Question no: 2</h1>
+    
+        This is a short description of the item.
+        <span class="content">Here is the full detail of the item. It contains extra information that is initially hidden.</span>
+    </p>
+    <button id="readMoreBtn">Read more</button>
+
+    <!-- Q3 -->
+       <h1>Question no: 3</h1>
+
+       <form id="studentForm"></form>
+        <input type="text" id="studentName" placeholder="Student Name" required>
+        <input type="text" id="studentAge" placeholder="Student Age" required>
+        <button type="submit">Add Student</button>
+    </form>
+    <table id="studentTable"></table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student rows will be added here -->
+        </tbody>
+    </table>
+ <script>
+        //   Q1
+        function submitForm() {
+            var name = document.signUp.name.value;
+            var email = document.signUp.email.value;
+            var password = document.signUp.password.value;
+
+            var displayed = document.getElementById('formDataDisplay');
+            displayed.style.display = 'block';
+            displayed.innerHTML = `
+             <h3>Form data submitted:</h3>
+             <p><strong>Name:</strong> ${name}</p>
+             <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Password:</strong> ${password}</p>`
+             ;
+
+             return false;
+
+        }
+
+        // Q2
+        function showReadMore() {
+         var btn = document.getElementById('readMoreBtn');
+         var content = document.querySelector('.content');
+         
+         if (content.style.display ==='none') {
+            content.style.display = 'inline';
+            btn.textContent = 'Read Less';
+         } else {
+            content.style.display = 'none';
+            btn.textContent = 'Read More';
+         }
+        }
+        var button = document.getElementById("readMoreBtn");
+        button.onclick = showReadMore;
+
+        document.querySelector(".content").style.display = "none";
+
+        // Q3
+        var studentForm = document.getElementById('studentForm');
+        var studentTable = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+
+        studentForm.onsubmit = function(e) {
+            e.preventDefault();
+            addStudent();
+        };
+
+        function addStudent() {
+            var name = document.getElementById('studentName').value;
+            var age = document.getElementById('studentAge').value;
+
+            var newRow = studentTable.insertRow();
+            newRow.insertCell(0).textContent = name;
+            newRow.insertCell(1).textContent = age;
+
+            var actionsCell = newRow.insertCell(2);
+            var editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.onclick = function() {
+                showEditForm(newRow);
+            };
+            actionsCell.appendChild(editButton);
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                deleteStudent(newRow);
+            };
+            actionsCell.appendChild(deleteButton);
+
+            studentForm.reset();
+        }
+
+        function deleteStudent(row) {
+            studentTable.deleteRow(row.rowIndex - 1);
+        }
+
+        function showEditForm(row) {
+            var name = row.cells[0].textContent;
+            var age = row.cells[1].textContent;
+
+            var editForm = document.createElement('form');
+            editForm.innerHTML = `
+                <input type="text" value="${name}" required>
+                <input type="text" value="${age}" required>
+                <button type="submit">Save</button>
+            `;
+
+            editForm.onsubmit = function(e) {
+                e.preventDefault();
+                var inputs = editForm.getElementsByTagName('input');
+                row.cells[0].textContent = inputs[0].value;
+                row.cells[1].textContent = inputs[1].value;
+                row.removeChild(editForm);
+            };
+
+            row.appendChild(editForm);
+        }
+    </script>
+
+</body>
+
+</html>

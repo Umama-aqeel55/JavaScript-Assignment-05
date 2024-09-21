@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <!-- CHAPTER 43 TO 48 -->
+          <!-- Q1 -->
+           <h1>Question no: 1</h1>
+           <a href="#" onclick="showAlert()" style="text-decoration: none; font-size: 30px; color: black;">Click me</a>
+
+           <!-- Q2 -->
+           <h1>Question no: 2</h1>
+             <div>
+                <img src="images/download (1).jpeg" alt="Mobile 1" onclick="showAlert2('iPhone7')">
+                <img src="images/download (2).jpeg" alt="Mobile 2" onclick="showAlert2('iPhone11')">
+                <img src="images/download (3).jpeg" alt="Mobile 3" onclick="showAlert2('iPhone12')">
+                <img src="images/download (4).jpeg" alt="Mobile 4" onclick="showAlert2('iPhone14')">
+            </div>
+
+             <!-- Q3 -->
+             <h1>Question no: 3</h1>
+             <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>Johne</td>
+                        <td>10</td>
+                        <td><button  onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Doe</td>
+                        <td>9</td>
+                        <td><button  onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mark</td>
+                        <td>10</td>
+                        <td><button  onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>James</td>
+                        <td>8</td>
+                        <td><button  onclick="deleteRow(this)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Q4 -->
+             <h1>Question no: 4</h1>
+             <img  id = "mobile-img" src="images/download (3).jpeg" width="200" height="200" onmouseover="swapImg()" onmouseout="resetImg()">
+              <!-- Q5 -->
+              <h1>Question no: 5</h1>
+             <div id="counter">0</div>
+              <button class="btn increase-btn" onClick="increaseCounter()" style="padding: 10px; color: black; background-color: #70aeff;">Increase</button>
+              <button class="btn decrease-btn" onClick="decreaseCounter()" style="padding: 10px; color: black; background-color: #70aeff;">Decrease</button>
+        
+    <script>
+        // Q1
+        function showAlert() {
+            alert('You clicked the link!');
+        }
+
+        // Q2
+
+          function showAlert2(mobileName) {
+            alert('You clicked: ' + mobileName)
+          }
+
+        // Q3
+        function deleteRow(btn) {
+            var row = btn.closest('tr');
+            row.remove();
+            
+        }
+
+        // Q4
+        function swapImg() {
+          document.getElementById('mobile-img').src = "images/download (3).jpeg"
+        }
+        function resetImg() {
+          document.getElementById('mobile-img').src = "images/download (4).jpeg"
+        }
+
+
+        // Q5
+        var counterValue = 0;
+
+        function increaseCounter() {
+            counterValue++;
+            document.getElementById('counter').innerText = counterValue;
+        }
+
+        function decreaseCounter() {
+            counterValue--;
+            document.getElementById('counter').innerText = counterValue;
+        }
+
+    </script>
+</body>
+</html>

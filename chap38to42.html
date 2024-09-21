@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //CHAPTER 38 TO 42
+        // Q1
+        document.write("<h1>Question no : 1</h1>")
+        function power(a, b) {
+            var result = 1;
+            for (var i = 0; i < b; i++) {
+                result *= a;
+            }
+            return result;
+        }
+        console.log(power(2, 3));
+        console.log(power(5, 2));
+
+        // Q2
+        document.write("<h1>Question no : 2</h1>")
+        function isLeapYear(year) {
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        var year = 2024;
+        if (isLeapYear(year)) {
+            console.log(year + " is a leap year.");
+        } else {
+            console.log(year + " is not a leap year.");
+        }
+
+        // Q3
+        document.write("<h1>Question no : 3</h1>")
+        function calculatesemiperimeter(a, b, c) {
+            // calculate semi perimeter
+            return (a + b + c) / 2;
+        }
+        function calculateArea(a, b, c) {
+            var S = calculatesemiperimeter(a, b, c);
+            // Calculate the area using Heron's formula
+            var area = Math.sqrt(S * (S - a) * (S - b) * (S - c));
+            return area;
+        }
+        var a = 5, b = 6, c = 7;
+        console.log("The area of triangle is:" + calculateArea(a, b, c));
+
+        // Q4
+        document.write("<h1>Question no : 4</h1>")
+        function calculateaverage(marks1, marks2, marks3) {
+            return (marks1 + marks2 + marks3) / 3;
+        }
+        function calculatePercentage(marks1, marks2, marks3, totalMarks) {
+            var obtainedMarks = marks1 + marks2 + marks3;
+            return (obtainedMarks / totalMarks) * 100;
+        }
+        function mainFunction(marks1, marks2, marks3, totalMarks) {
+            var average = calculateaverage(marks1, marks2, marks3);
+            var percentage = calculatePercentage(marks1, marks2, marks3, totalMarks);
+
+            console.log("Average marks :" + average);
+            console.log("Percentage :" + percentage + "%");
+
+        }
+
+        var marks1 = 85, marks2 = 90, marks3 = 80;
+        var totalMarks = 300;
+        mainFunction(marks1, marks2, marks3, totalMarks);
+        //   Q5
+        document.write("<h1>Question no : 5</h1>")
+        function customIndexOf(str, char) {
+            for (i = 0; i < str.length; i++) {
+                if (str[i] === char) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        var result = customIndexOf('Hello', 'e');
+        console.log(result);
+
+        //Q6
+        document.write("<h1>Question no : 6</h1>")
+        function removeVowel(sentence) {
+            var vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+            var result = '';
+
+            for (var i = 0; i < sentence.length; i++) {
+                if (!vowels.includes(sentence[i])) {
+                    result += sentence[i];
+                }
+            }
+            return result;
+        }
+        var sentence = 'I am Pakistani';
+        var vowelRemove = removeVowel(sentence);
+        console.log(vowelRemove);
+
+        //Q7
+        document.write("<h1>Question no : 7</h1>")
+
+        function countSuccessiveVowels(text) {
+            text = text.toLowerCase();
+
+            var count = 0;
+
+            for (var i = 0; i < text.length - 1; i++) {
+                var currentChar = text[i];
+                var nextChar = text[i + 1];
+
+                switch (currentChar + nextChar) {
+                    case 'aa':
+                    case 'ae':
+                    case 'ai':
+                    case 'ao':
+                    case 'au':
+                    case 'ea':
+                    case 'ee':
+                    case 'ei':
+                    case 'eo':
+                    case 'eu':
+                    case 'ia':
+                    case 'ie':
+                    case 'ii':
+                    case 'io':
+                    case 'iu':
+                    case 'oa':
+                    case 'oe':
+                    case 'oi':
+                    case 'oo':
+                    case 'ou':
+                    case 'ua':
+                    case 'ue':
+                    case 'ui':
+                    case 'uo':
+                        count++;
+                        break;
+                }
+            }
+            return count;
+        }
+        var sentence = 'Pleases read this application and give me gratuity';
+        console.log(countSuccessiveVowels(sentence));
+        //Q8
+        document.write("<h1>Question no : 8</h1>")
+        function convertToMeters(km) {
+            return km * 1000;
+        }
+        function convertToFeet(km) {
+            return km * 3280.84;
+        }
+        function convertToInches(km) {
+            return km * 39370.1;
+        }
+        function convertToCentimeters(km) {
+            return km * 100000;
+        }
+
+        var distanceInKm = parseFloat(prompt("Enter the distance between two cities in kilometers:"));
+
+        console.log("Distance in meters: " + convertToMeters(distanceInKm) + " meters");
+        console.log("Distance in feet: " + convertToFeet(distanceInKm) + " feet");
+        console.log("Distance in inches: " + convertToInches(distanceInKm) + " inches");
+        console.log("Distance in centimeters: " + convertToCentimeters(distanceInKm) + " centimeters");
+
+        //Q9
+        document.write("<h1>Question no : 9</h1>")
+        function calculateOverTimePay(hoursWorked) {
+            var regularHour = 40;
+            var overtimeRate = 12.00;
+            if (hoursWorked > regularHour) {
+                var overTimeHour = hoursWorked - regularHour;
+                var overTimePay = overTimeHour * overtimeRate;
+                return overTimePay;
+            } else {
+                return 0;
+            }
+        }
+
+        var hoursWorked = parseInt(prompt('Enter the number of hour worked'));
+
+        if (hoursWorked >= 0) {
+            var overTimePay = calculateOverTimePay(hoursWorked);
+            console.log("Overtime Pay Rs:" + overTimePay);
+        } else {
+            console.log("Invalid input! Please enter a valid number of hours.");
+        }
+
+        //Q10
+        document.write("<h1>Question no : 10</h1>")
+
+        function calculateCurrencyNotes(amount) {
+            var hundredNotes = 0, fiftyNotes = 0, tenNotes = 0;
+
+            hundredNotes = Math.floor(amount / 100);
+            amount %= 100;
+
+            fiftyNotes = Math.floor(amount / 50)
+            amount %= 50;
+
+            tenNotes = Math.floor(amount / 10);
+            amount %= 10;
+
+            return {
+                hundredNotes: hundredNotes,
+                fiftyNotes: fiftyNotes,
+                tenNotes: tenNotes
+            };
+
+        }
+
+        var amount = parseInt(prompt("Enter the amount to withdraw (in hundreds):"));
+
+        if (amount % 10 === 0) {
+            var notes = calculateCurrencyNotes(amount);
+            console.log("100 Rs notes: " + notes.hundredNotes);
+            console.log("50 Rs notes: " + notes.fiftyNotes);
+            console.log("10 Rs notes: " + notes.tenNotes);
+        } else {
+            console.log("Invalid input! The amount must be a multiple of 10.");
+        }
+
+    </script>
+</body>
+
+</html>

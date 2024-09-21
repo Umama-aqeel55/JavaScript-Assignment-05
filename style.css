@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+ 
+}
+
+body{
+    background-color: aquamarine;
+}
+
+.container{
+    width: 370px;
+    height: 38vh;
+    padding: 20px;
+    text-align: center;
+    background-color: #F96167; 
+    margin: auto;
+    margin-top: 230px;
+    color: #000;
+    border-radius: 10px;
+    box-shadow: cadetblue 5px;
+}
+
+.container>h2{
+    font-size: xx-large;
+}
+
+.container>a{
+    text-decoration: none;
+    color: #000;
+    font-size: x-large;
+}
+
+.container > a:hover{
+    color: #F9E795;
+    border-bottom: 5px solid #F9E795;
+    transition: .5s ease;
+}
